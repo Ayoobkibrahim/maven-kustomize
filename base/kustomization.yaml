@@ -4,5 +4,6 @@ resources:
   - hpa.yaml
   - ingress.yaml
 
-commonLabels:
-  app: maven-app
+labels:
+  - pairs:
+      app: maven-app
