@@ -2,15 +2,31 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: maven-app-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
 spec:
-  rules: 
+  rules:
     - host: maven-app.local
       http:
         paths:
-          - path: /
+          - path: /dev
             pathType: Prefix
             backend:
-              service: 
-                name:  maven-app-service
-                port: 
-                  number : 80
+              service:
+                name: maven-app-service
+                port:
+                  number: 80
+          - path: /stage
+            pathType: Prefix
+            backend:
+              service:
+                name: maven-app-service
+                port:
+                  number: 80
+          - path: /prod
+            pathType: Prefix
+            backend:
+              service:
+                name: maven-app-service
+                port:
+                  number: 80
