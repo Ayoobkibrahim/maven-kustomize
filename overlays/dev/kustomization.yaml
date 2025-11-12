@@ -2,4 +2,5 @@ resources:
   - ../../base
 patchesStrategicMerge:
   - patch.yaml
-  
+
+namespace: dev
