@@ -6,8 +6,11 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      name: maven-app
+      app: maven-app
   template:
+    metadata:
+      labels:
+        app: maven-app
     spec:
       containers:
         - name: maven-app
