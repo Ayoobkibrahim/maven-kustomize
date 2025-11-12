@@ -2,6 +2,7 @@ resources:
   - ../../base
 
 patches:
-  - path: patch.yaml
+  - path: patch-deployment.yaml
+  - path: patch-ingress.yaml
 
 namespace: prod
