@@ -4,7 +4,7 @@ metadata:
   name: maven-app-ingress
 spec:
   rules:
-    - host: prod.maven-app.local
+    - host: stage.maven-app.local
       http:
         paths:
           - path: /
