@@ -15,6 +15,9 @@ spec:
       containers:
         - name: maven-app
           image: ayoobki/maven-app:prod
+          env:
+            - name: APP_ENV
+              value: "PROD"
           resources:
             requests:
               cpu: "50m"

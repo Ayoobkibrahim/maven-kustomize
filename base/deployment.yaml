@@ -15,6 +15,9 @@ spec:
       containers:
         - name : maven-app
           image: ayoobki/maven-app:latest
+          env:
+            - name: APP_ENV
+              value: "default"
           ports:
             - containerPort: 8080
           resources:
