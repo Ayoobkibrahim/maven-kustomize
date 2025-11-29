@@ -15,9 +15,6 @@ spec:
       containers:
         - name: maven-app
           image: ayoobki/maven-app:stage
-          env:
-            - name: APP_ENV
-              value: "STAGE"
           resources:
             requests:
               cpu: "50m"
