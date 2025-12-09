@@ -4,16 +4,16 @@ kind: Kustomization
 namespace: stage
 
 resources:
-  - ../../base/deployment.yaml
-  - ../../base/service.yaml
-  - ../../base/hpa.yaml
+  - ../../../base
+
+resources:
+  - rollout-canary.yaml
+  - destination-rule.yaml
+  - virtual-service.yaml
+  - istio-ingress.yaml
 
 patches:
-  - istio-canary/rollout-canary.yaml
-  - istio-canary/destination-rule.yaml
-  - istio-canary/virtual-service.yaml
-  - istio-canary/istio-ingress.yaml
-
-images:
-  - name: ayoobki/maven-app
-    newTag: stage
+  - path: rollout-canary.yaml
+    target:
+      kind: Deployment
+      name: maven-app
