@@ -1,24 +1,24 @@
-# apiVersion: apps/v1
-# kind: Deployment
-# metadata:
-#   name: maven-app
-# spec:
-#   replicas: 4
-#   selector:
-#     matchLabels:
-#       app: maven-app
-#   template:
-#     metadata:
-#       labels:
-#         app: maven-app
-#     spec:
-#       containers:
-#         - name: maven-app
-#           image: ayoobki/maven-app:stage
-#           resources:
-#             requests:
-#               cpu: "50m"
-#               memory: "128Mi"
-#             limits:
-#               cpu: "150m"
-#               memory: "256Mi"
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: maven-app
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: maven-app
+  template:
+    metadata:
+      labels:
+        app: maven-app
+    spec:
+      containers:
+        - name: maven-app
+          image: ayoobki/maven-app:stage
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "128Mi"
+            limits:
+              cpu: "150m"
+              memory: "256Mi"

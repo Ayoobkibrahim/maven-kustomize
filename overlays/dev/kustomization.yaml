@@ -1,23 +1,19 @@
-# apiVersion: kustomize.config.k8s.io/v1beta1
-# kind: Kustomization
-
-# resources:
-#   - ../../base
-
-# patches:
-#   - path: patch-deployment.yaml
-#   - path: patch-ingress.yaml
-
-# namespace: dev
-
-# images:
-#   - name: ayoobki/maven-app
-#     newTag: dev
-
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
+resources:
+  - ../../base
+  - bluegreen/
+
+patches:
+  - path: patch-deployment.yaml
+  - path: patch-ingress.yaml
+
 namespace: dev
 
-resources:
-  - bluegreen/
+images:
+  - name: ayoobki/maven-app
+    newTag: dev
+
+
+  

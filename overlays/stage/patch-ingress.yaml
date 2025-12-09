@@ -1,16 +1,16 @@
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-#   name: maven-app-ingress
-# spec:
-#   rules:
-#     - host: stage.maven-app.local
-#       http:
-#         paths:
-#           - path: /
-#             pathType: Prefix
-#             backend:
-#               service:
-#                 name: maven-app-service
-#                 port:
-#                   number: 80
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: maven-app-ingress
+spec:
+  rules:
+    - host: stage.maven-app.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: maven-app-service
+                port:
+                  number: 80
