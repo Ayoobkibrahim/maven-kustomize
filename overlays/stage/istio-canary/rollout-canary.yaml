@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: maven-app
+  namespace: stage
+spec:
+  replicas: 4
+  strategy:
+    canary:
+      canaryService: maven-app-canary
+      stableService: maven-app-stable
+      trafficRouting:
+        istio:
+          virtualService:
+            name: maven-app
+            routes:
+              - http
+      steps:
+        - setWeight: 5
+        - pause: {duration: 30}
+        - setWeight: 20
+        - pause: {duration: 30}
+        - setWeight: 50
+        - pause: {duration: 30}
+  selector:
+    matchLabels:
+      app: maven-app
+  template:
+    metadata:
+      labels:
+        app: maven-app
+        role: canary
+    spec:
+      containers:
+        - name: maven-app
+          image: ayoobki/maven-app:stage
+          ports:
+            - containerPort: 8080

@@ -1,0 +1,18 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: maven-app
+  namespace: stage
+spec:
+  hosts:
+    - maven-app-stage.local
+  http:
+    - route:
+        - destination:
+            host: maven-app
+            subset: stable
+          weight: 95
+        - destination:
+            host: maven-app
+            subset: canary
+          weight: 5

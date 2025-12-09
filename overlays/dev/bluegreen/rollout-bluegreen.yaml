@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: maven-app
+  namespace: dev
+spec:
+  replicas: 3
+  strategy:
+    blueGreen:
+      activeService: maven-app-active
+      previewService: maven-app-preview
+      autoPromotionEnabled: false
+  selector:
+    matchLabels:
+      app: maven-app
+  template:
+    metadata:
+      labels:
+        app: maven-app
+    spec:
+      containers:
+        - name: maven-app
+          image: ayoobki/maven-app:v1
+          ports:
+            - containerPort: 8080

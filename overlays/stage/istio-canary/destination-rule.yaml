@@ -1,0 +1,16 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: maven-app
+  namespace: stage
+spec:
+  host: maven-app
+  subsets:
+    - name: stable
+      labels:
+        app: maven-app
+        role: stable
+    - name: canary
+      labels:
+        app: maven-app
+        role: canary
