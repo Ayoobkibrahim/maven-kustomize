@@ -8,7 +8,6 @@ resources:
 
 resources:
   - rollout-bluegreen.yaml
-  - bluegreen-service.yaml
   - bluegreen-ingress.yaml
 
 patches:
