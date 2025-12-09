@@ -4,7 +4,11 @@ kind: Kustomization
 namespace: dev
 
 resources:
-  - ../../../base
+  - ../../../base/deployment.yaml
+  - ../../../base/service.yaml
+  - ../../../base/hpa.yaml
+
+patches:
   - rollout-bluegreen.yaml
   - bluegreen-service.yaml
   - bluegreen-ingress.yaml
