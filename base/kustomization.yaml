@@ -7,9 +7,6 @@ resources:
   - hpa.yaml
   - ingress.yaml
 
-# labels:
-#   - pairs:
-#       app: maven-app
-
-commonLabels:
-  app: maven-app
+labels:
+  - pairs:
+      app: maven-app
